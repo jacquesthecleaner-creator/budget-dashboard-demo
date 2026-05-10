@@ -104,7 +104,7 @@ export default function Dashboard() {
 
   const categoryData = Object.entries(data.summary.byCategory).map(([name, value]) => ({
     name,
-    value: parseFloat(String(value).toFixed(2)),
+    value: parseFloat((Number(value)).toFixed(2)),
   }));
 
   const monthDates = Array.from({ length: 12 }, (_, i) => {
@@ -211,9 +211,9 @@ export default function Dashboard() {
                 >
                   {categoryData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
+                  ))}  
                 </Pie>
-                <Tooltip formatter={(value) => `$${value.toFixed(2)}`} />
+                <Tooltip formatter={(value: any) => `$${Number(value).toFixed(2)}`} />
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -228,7 +228,7 @@ export default function Dashboard() {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name" angle={-45} textAnchor="end" height={100} />
                 <YAxis />
-                <Tooltip formatter={(value) => `$${value.toFixed(2)}`} />
+                <Tooltip formatter={(value: any) => `$${Number(value).toFixed(2)}`} />
                 <Bar dataKey="value" fill="#3b82f6" />
               </BarChart>
             </ResponsiveContainer>

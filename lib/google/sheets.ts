@@ -48,7 +48,7 @@ export async function getSheetData(
   const auth = getAuthClient();
 
   const response = await sheets.spreadsheets.values.get({
-    auth,
+    auth: auth as any,
     spreadsheetId: process.env.GOOGLE_SHEETS_SPREADSHEET_ID,
     range: `${sheetName}!A:E`,
   });
@@ -63,7 +63,7 @@ export async function appendTransaction(
   const auth = getAuthClient();
 
   await sheets.spreadsheets.values.append({
-    auth,
+    auth: auth as any,
     spreadsheetId: process.env.GOOGLE_SHEETS_SPREADSHEET_ID,
     range: `${sheetName}!A:E`,
     valueInputOption: 'USER_ENTERED',

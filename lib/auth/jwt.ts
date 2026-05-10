@@ -21,7 +21,7 @@ export async function createToken(user: 'andy' | 'aileen'): Promise<string> {
 export async function verifyToken(token: string): Promise<AuthPayload> {
   try {
     const verified = await jose.jwtVerify(token, secret);
-    return verified.payload as AuthPayload;
+    return verified.payload as unknown as AuthPayload;
   } catch (error) {
     throw new Error('Invalid or expired token');
   }
