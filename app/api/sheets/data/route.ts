@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getMonthData } from '@/lib/google/sheets';
 import { verifyToken } from '@/lib/auth/jwt';
+import { getMockMonthData } from '@/lib/demo/mockData';
 
 export async function GET(request: NextRequest) {
   try {
@@ -34,7 +35,13 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const data = await getMonthData(month, year);
+    // Use demo data if DEMO_MODE is enabled
+    let data;
+    if (process.env.DEMO_MODE === 'true') {
+      data = getMockMonthData(month, year);
+    } else {
+      data = await getMonthData(month, year);
+    }
 
     return NextResponse.json(data, { status: 200 });
   } catch (error: any) {
