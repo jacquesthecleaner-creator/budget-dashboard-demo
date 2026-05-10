@@ -1,0 +1,15 @@
+.git
+.gitignore
+node_modules
+npm-debug.log
+.env.local.example
+.next/cache
+.DS_Store
+*.log
+README.md
+SETUP_INSTRUCTIONS.md
+DEPLOYMENT.md
+ARCHITECTURE.md
+QUICKSTART.md
+IMPLEMENTATION_SUMMARY.md
+DEMO_DEPLOYMENT.md
