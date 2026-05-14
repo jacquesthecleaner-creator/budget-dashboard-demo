@@ -4,14 +4,8 @@
   "installCommand": "npm install",
   "framework": "nextjs",
   "env": {
-    "DEMO_MODE": {
-      "description": "Enable demo mode with mock data"
-    },
-    "DASHBOARD_PASSWORD": {
-      "description": "Dashboard login password"
-    },
-    "JWT_SECRET": {
-      "description": "JWT signing secret"
-    }
+    "DEMO_MODE": "true",
+    "DASHBOARD_PASSWORD": "demo123",
+    "JWT_SECRET": "your-secret-key-change-in-production"
   }
 }
