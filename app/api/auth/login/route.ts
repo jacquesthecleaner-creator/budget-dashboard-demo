@@ -26,7 +26,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const token = await createToken(user as 'andy' | 'aileen');
+    let token: string;
+    try {
+      token = await createToken(user as 'andy' | 'aileen');
+    } catch (tokenError) {
+      console.error('Token creation failed:', tokenError);
+      return NextResponse.json(
+        { error: 'Failed to create session' },
+        { status: 500 }
+      );
+    }
 
     const response = NextResponse.json(
       { token, user },
