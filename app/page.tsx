@@ -1,10 +1,5 @@
-import LoginForm from './components/LoginForm';
-
-export const metadata = {
-  title: 'Budget Dashboard - Login',
-  description: 'Household budget tracking with receipt OCR',
-};
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return <LoginForm />;
+  redirect('/dashboard');
 }
