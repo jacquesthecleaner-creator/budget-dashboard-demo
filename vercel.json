@@ -3,38 +3,15 @@
   "devCommand": "next dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "env": [
-    {
-      "key": "GOOGLE_SHEETS_SPREADSHEET_ID",
-      "description": "Google Sheets spreadsheet ID"
+  "env": {
+    "DEMO_MODE": {
+      "description": "Enable demo mode with mock data"
     },
-    {
-      "key": "GOOGLE_SERVICE_ACCOUNT_EMAIL",
-      "description": "Google service account email"
-    },
-    {
-      "key": "GOOGLE_PRIVATE_KEY",
-      "description": "Google service account private key (with \\n for newlines)"
-    },
-    {
-      "key": "ANTHROPIC_API_KEY",
-      "description": "Anthropic Claude API key"
-    },
-    {
-      "key": "DASHBOARD_PASSWORD",
+    "DASHBOARD_PASSWORD": {
       "description": "Dashboard login password"
     },
-    {
-      "key": "JWT_SECRET",
+    "JWT_SECRET": {
       "description": "JWT signing secret"
-    },
-    {
-      "key": "TELEGRAM_BOT_TOKEN",
-      "description": "Telegram bot token (optional)"
-    },
-    {
-      "key": "TELEGRAM_WEBHOOK_SECRET",
-      "description": "Telegram webhook secret (optional)"
     }
-  ]
+  }
 }
