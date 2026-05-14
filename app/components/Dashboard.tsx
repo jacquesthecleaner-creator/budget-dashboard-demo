@@ -75,10 +75,10 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-          <p className="mt-4 text-gray-600">Loading data...</p>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+          <p className="mt-4 text-gray-300">Loading data...</p>
         </div>
       </div>
     );
@@ -86,12 +86,12 @@ export default function Dashboard() {
 
   if (error) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-        <div className="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
-          <p className="text-red-600 font-semibold mb-4">{error}</p>
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4">
+        <div className="bg-gray-800 rounded-lg shadow-lg p-8 max-w-md text-center border border-gray-700">
+          <p className="text-red-400 font-semibold mb-4">{error}</p>
           <button
             onClick={fetchData}
-            className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700"
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
           >
             Try Again
           </button>
@@ -113,20 +113,20 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Budget Dashboard</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">Budget Dashboard</h1>
           <div className="flex gap-4 flex-wrap">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Month
               </label>
               <select
                 value={month}
                 onChange={(e) => setMonth(parseInt(e.target.value))}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-blue-500"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((m) => (
                   <option key={m} value={m}>
@@ -136,13 +136,13 @@ export default function Dashboard() {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Year
               </label>
               <select
                 value={year}
                 onChange={(e) => setYear(parseInt(e.target.value))}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"
+                className="px-4 py-2 border border-gray-600 rounded-lg bg-gray-700 text-white focus:ring-2 focus:ring-blue-500"
               >
                 {[2024, 2025, 2026].map((y) => (
                   <option key={y} value={y}>
@@ -156,33 +156,33 @@ export default function Dashboard() {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-gray-600 text-sm font-semibold uppercase mb-2">
+          <div className="bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700">
+            <h3 className="text-gray-400 text-sm font-semibold uppercase mb-2">
               Total Income
             </h3>
-            <p className="text-3xl font-bold text-green-600">
+            <p className="text-3xl font-bold text-green-400">
               ${data.summary.totalIncome.toFixed(2)}
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-gray-600 text-sm font-semibold uppercase mb-2">
+          <div className="bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700">
+            <h3 className="text-gray-400 text-sm font-semibold uppercase mb-2">
               Total Expenses
             </h3>
-            <p className="text-3xl font-bold text-red-600">
+            <p className="text-3xl font-bold text-red-400">
               ${data.summary.totalExpenses.toFixed(2)}
             </p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h3 className="text-gray-600 text-sm font-semibold uppercase mb-2">
+          <div className="bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700">
+            <h3 className="text-gray-400 text-sm font-semibold uppercase mb-2">
               Net
             </h3>
             <p
               className={`text-3xl font-bold ${
                 data.summary.totalIncome - data.summary.totalExpenses >= 0
-                  ? 'text-green-600'
-                  : 'text-red-600'
+                  ? 'text-green-400'
+                  : 'text-red-400'
               }`}
             >
               ${(data.summary.totalIncome - data.summary.totalExpenses).toFixed(2)}
@@ -193,8 +193,8 @@ export default function Dashboard() {
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Pie Chart - Category Breakdown */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">
+          <div className="bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold text-white mb-4">
               Spending by Category
             </h2>
             <ResponsiveContainer width="100%" height={300}>
@@ -219,8 +219,8 @@ export default function Dashboard() {
           </div>
 
           {/* Bar Chart - Category Comparison */}
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-lg font-semibold text-gray-800 mb-4">
+          <div className="bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700">
+            <h2 className="text-lg font-semibold text-white mb-4">
               Expenses by Category
             </h2>
             <ResponsiveContainer width="100%" height={300}>
@@ -236,40 +236,40 @@ export default function Dashboard() {
         </div>
 
         {/* Transactions List */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+        <div className="bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700">
+          <h2 className="text-lg font-semibold text-white mb-4">
             Transactions ({data.transactions.length})
           </h2>
           {data.transactions.length > 0 ? (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-2 px-2 font-semibold text-gray-700">
+                  <tr className="border-b-2 border-gray-700">
+                    <th className="text-left py-2 px-2 font-semibold text-gray-200">
                       Date
                     </th>
-                    <th className="text-left py-2 px-2 font-semibold text-gray-700">
+                    <th className="text-left py-2 px-2 font-semibold text-gray-200">
                       Description
                     </th>
-                    <th className="text-left py-2 px-2 font-semibold text-gray-700">
+                    <th className="text-left py-2 px-2 font-semibold text-gray-200">
                       Category
                     </th>
-                    <th className="text-right py-2 px-2 font-semibold text-gray-700">
+                    <th className="text-right py-2 px-2 font-semibold text-gray-200">
                       Amount
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {data.transactions.map((tx, idx) => (
-                    <tr key={idx} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="py-3 px-2 text-gray-600">{tx.date}</td>
-                      <td className="py-3 px-2 text-gray-800">{tx.description}</td>
+                    <tr key={idx} className="border-b border-gray-700 hover:bg-gray-700">
+                      <td className="py-3 px-2 text-gray-300">{tx.date}</td>
+                      <td className="py-3 px-2 text-gray-100">{tx.description}</td>
                       <td className="py-3 px-2">
-                        <span className="inline-block bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full">
+                        <span className="inline-block bg-blue-900 text-blue-200 text-xs font-semibold px-3 py-1 rounded-full">
                           {tx.subcategory}
                         </span>
                       </td>
-                      <td className="py-3 px-2 text-right font-semibold text-gray-800">
+                      <td className="py-3 px-2 text-right font-semibold text-gray-100">
                         ${tx.amount.toFixed(2)}
                       </td>
                     </tr>
@@ -278,7 +278,7 @@ export default function Dashboard() {
               </table>
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">No transactions for this month</p>
+            <p className="text-gray-400 text-center py-8">No transactions for this month</p>
           )}
         </div>
       </div>
