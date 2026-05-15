@@ -294,3 +294,4 @@ For issues, questions, or feature requests, reach out to Andy or Aileen.
 ---
 
 **Built with ❤️ for household budget tracking**
+# OAuth2 configured
